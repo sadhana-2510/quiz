@@ -1,10 +1,13 @@
+//below are the list of import statements
 const express = require('express');
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const session = require("express-session");
 const fs = require('fs');
 const mysql = require('mysql2');
+// initiate new express service
 const app = express();
+// list of use options to enable cookie parser and body parser 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -14,7 +17,7 @@ app.use(session({
 }));
 
 app.use('/', express.static('./public'));
-
+//create database connections 
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'quiz-user',
@@ -23,7 +26,7 @@ const pool = mysql.createPool({
     insecureAuth:true 
 });
 
-
+//processes login submit action 
 app.post('/login', async (req, res) => {
     const userName = req.body.username;
     const password = req.body.password;
@@ -40,7 +43,7 @@ app.post('/login', async (req, res) => {
     console.log('user from the data base ->' + dbUser);
     res.sendFile(sendFile)
 });
-
+//retriving userdata from database
 getUser = (username, password) =>{
     return new Promise((resolve, reject)=>{
         // query the data base
@@ -59,7 +62,7 @@ getUser = (username, password) =>{
         });
     });
 };
-
+//provides logged in user details to dispaly in home page for welcome details
 app.get('/loggedInUser', (req, res) => {
     console.log('loggedInUser is ' + req.session.loggedInUser);
     const loggedInUser = {
@@ -67,7 +70,7 @@ app.get('/loggedInUser', (req, res) => {
     }
     res.send(loggedInUser);
 });
-
+//user login status(successfull login or invalid)
 app.get('/loginStatus', (req, res) => {
     console.log('login status ->' + req.session.loginStatus);
     const loginStatus = {
@@ -75,11 +78,11 @@ app.get('/loginStatus', (req, res) => {
     }
     res.send(loginStatus);
 });
-
+//redirecting to sign up page
 app.get('/signUpPage', (req, res) =>{
     res.sendFile(__dirname+'/signup.html')
 });
-
+// submit action for sign up(create entry in user table)
 app.post('/signup', async (req, res) =>{
     const fullName = req.body.fullname;
     const username = req.body.username;
@@ -87,7 +90,7 @@ app.post('/signup', async (req, res) =>{
     await createUser(fullName, username, password);
     res.sendFile(__dirname+'/login.html')
 });
-
+// create an entry in quiz-user 
 createUser = (fullname, username, password) =>{
     return new Promise((resolve, reject)=>{
         // query the data base
@@ -105,17 +108,17 @@ createUser = (fullname, username, password) =>{
         });
     });
 };
-
+//initial loading action to load login.html
 app.get('/quiz', (req, res) => {
     res.sendFile(__dirname + "/login.html");
 });
-
+//redirect to quiz.html
 app.post('/loadQuestions', (req, res) => {
     req.session.level = req.body.level;
     console.log(req.session.level);
     res.sendFile(__dirname + "/quiz.html");
 });
-
+//retriving questions from file based on selected level
 app.get('/questions', (req, res) => {
     const fileName = "./" + req.session.level + ".json"
     const data = fs.readFileSync(fileName, {encoding:'utf8'});    
@@ -127,7 +130,7 @@ app.get('/questions', (req, res) => {
     }
     res.send(questions);
 });
-
+//submit action for quiz page(evaluation)
 app.post('/questions', async (req, res) => {
     console.log(req.body);
     const answers= req.body;
@@ -158,7 +161,7 @@ app.post('/questions', async (req, res) => {
     await createResult(req.session.loggedInUser, score, req.session.level);
     res.sendFile(__dirname + "/results.html");
 });
-
+//create the result as score in database
 createResult = (username, score, level) =>{
     return new Promise((resolve, reject)=>{
         // query the data base
@@ -176,7 +179,7 @@ createResult = (username, score, level) =>{
         });
     });
 };
-
+//retrive the results from the session
 app.get('/results', (req, res) => {
     console.log('Retrieiving the result from session');
     const results = {
@@ -187,11 +190,11 @@ app.get('/results', (req, res) => {
     }
     res.send(results);
 });
-
+//redirect to home page
 app.get('/home', (req, res) => {
     res.sendFile(__dirname + "/home.html");
 });
-
+//retrive the previous score from database
 app.get('/prevScores', async (req, res) => {
     console.log('Retrieiving the result from session');
     const scores = await getScores(req.session.loggedInUser);
@@ -225,7 +228,7 @@ getScores = (username) =>{
 app.get('/loadPrevScores', async (req, res) => {
     res.sendFile(__dirname+"/prevscores.html");
 });
-
+//keeps the server running until manually stopped
 const port = 8080;
 app.listen(port, () => {
     console.log(`Server running on port${port}`);
