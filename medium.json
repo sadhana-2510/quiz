@@ -1,0 +1,12 @@
+[
+    {"id":1,"text":"What is the probability of getting an even number when a dice is rolled","answerChoice":["1/2","1/4","1/6","4/5"],"correctAnswer":"1/2"},
+    {"id":2,"text":"The surface area of a cube is 600 cm2. The length of its diagonal is","answerChoice":["10 sqrt(3)cm","2cm","5cm","10 sqrt(2)cm"],"correctAnswer":"10 sqrt(3)cm"},
+    {"id":3,"text":"What is the market price of a 9% share when a person gets 180 by investing Rs. 4000","answerChoice":["200","300","400","100"],"correctAnswer":"200"},
+    {"id":4,"text":"If 15 men can reap the crops of a field in 28 days, in how many days will 5 men reap it","answerChoice":["84","64","54","44"],"correctAnswer":"84"},
+    {"id":5,"text":"Find the logarithm of 1/256 to the base 2√2.","answerChoice":["-16/3","1/4","1/45","11/12"],"correctAnswer":"-16/3"},
+    {"id":6,"text":"Complete the series 2, 5, 9, 19, 37.......","answerChoice":["76","75","77","65"],"correctAnswer":"75"},
+    {"id":7,"text":"In what ways the letters of the word RUMOUR can be arranged","answerChoice":["180","139","150","170"],"correctAnswer":"180"},
+    {"id":8,"text":"In what ways can a group of 6 boys and 2 girls be made out of the total of 7 boys and 3 girls","answerChoice":["22","23","21","20"],"correctAnswer":"21"},
+    {"id":9,"text":"If January 1, 1996, was Monday, what day of the week was January 1, 1997","answerChoice":["wednesday","tuesday","monday","sunday"],"correctAnswer":"wednesday"},
+    {"id":10,"text":" What was the day of the week on June 17, 1991","answerChoice":["monday","tuesday","thursday","sunday"],"correctAnswer":"monday"}
+]

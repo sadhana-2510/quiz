@@ -1,0 +1,12 @@
+[
+    {"id":1,"text":" What is the average of first five multiples of 12","answerChoice":["36","38","40","42"],"correctAnswer":"36" },
+    {"id":2,"text":"What is the difference in the place value of 5 in the numeral 754853","answerChoice":["49950","49500","44950","45450"],"correctAnswer":"49950"},
+    {"id":3,"text":"The speed of a boat in still water is 5km/hr. If the speed of the boat against the stream is 3 km/hr, what is the speed of the stream","answerChoice":["3km/hr","2km/hr","5km/hr","6km/hr"],"correctAnswer":"2km/hr"},
+    {"id":4,"text":"What is the compound interest on Rs. 2500 for 2 years at rate of interest 4% per annum","answerChoice":["105","304","204","124"],"correctAnswer":"204"},
+    {"id":5,"text":"A mother is twice as old as her son. If 20 years ago, the age of the mother was 10 times the age of the son, what is the present age of the mother","answerChoice":["45","25","35","40"],"correctAnswer":"45"},
+    {"id":6,"text":" If January 1, 1996, was Monday, what day of the week was January 1, 1997","answerChoice":["wednesday","thursday","saturday","sunday"],"correctAnswer":"wednesday"},
+    {"id":7,"text":" How many times the hands of a clock coincide in a day","answerChoice":["22","23","24","26"],"correctAnswer":"22"},
+    {"id":8,"text":"40 % of 280 ","answerChoice":["112","114","224","102"],"correctAnswer":"112"},
+    {"id":9,"text":"A train moving at speed of 80 km/hr crosses a pole in 7 seconds. Find the length of the train.","answerChoice":["175","155","125","122"],"correctAnswer":"175"},
+    {"id":10,"text":"The value of 5^(1/4) x (125)^0.25 is","answerChoice":["5","10","25","15"],"correctAnswer":"5"}
+]

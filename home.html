@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+</head>  
+<script type="text/javascript" charset="utf-8">
+    fetch('http://localhost:8080/loggedInUser')
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        }).then(function (apiJsonData) {
+            console.log(apiJsonData);
+            renderHeaderDiv(apiJsonData);
+        })
+    
+    function renderHeaderDiv(loggedInUser) {
+        const mydiv = document.getElementById("header-div");
+        console.log(loggedInUser);
+        mydiv.innerHTML = "<h1> Welcome " + loggedInUser.userName + " to our quiz !!! </h1>";
+        console.log(mydiv);
+    }
+
+</script>
+<body>
+      <div class="header" id="header">
+        <img src="/images/citlogo.png">
+      </div> 
+
+      <div class="topnav" id="myTopnav">
+        <a href="http://localhost:8080/home" class="active">Home</a>
+        <a href="http://localhost:8080/loadPrevScores">Score History</a>
+      </div>
+
+      <div class="header" id="header-div">
+        test
+      </div>
+      
+      <div class="header" id="options">
+        <form method="POST" action="http://localhost:8080/loadQuestions">
+            <p>Please select the level for your quiz</p>
+              <input type="radio" id="easy" name="level" value="easy">
+              <label for="html">Easy</label><br>
+              <input type="radio" id="medium" name="level" value="medium">
+              <label for="css">Medium</label><br>
+              <input type="radio" id="hard" name="level" value="hard">
+              <label for="javascript">Hard</label>
+              <button type="submit">Submit</button> 
+        </form>
+      </div>  
+</body>   
+</html>

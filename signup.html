@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+</head>  
+<body>
+      <div class="header" id="header">
+        <img src="images/citlogo.png">
+      </div>  
+      <form method="POST" action="http://localhost:8080/signup">
+        <div class="container"> 
+            <label>Full Name (First Name and Last Name) : </label> 
+            <input type="text" placeholder="Enter Username" name="fullname" required>
+            <label>User Name : </label> 
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <label>Password : </label> 
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <label>Confirm Password : </label> 
+            <input type="password" placeholder="Re Enter Password" name="confirm-password" required>
+            <div id="login-status"></div>
+            <button type="submit">register</button>  
+            <button type="reset" class="cancelbtn"> Cancel</button> 
+        </div> 
+    </form>   
+</body>   
+</html>

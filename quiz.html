@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+</head>  
+<script type="text/javascript" charset="utf-8">
+    fetch('http://localhost:8080/questions')
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        }).then(function (apiJsonData) {
+            console.log(apiJsonData);
+            renderHeaderDiv(apiJsonData);
+        })
+    
+    function renderHeaderDiv(questions) {
+        const mydiv = document.getElementById("header-div");
+        console.log(questions);
+        mydiv.innerHTML = "<h1> " + questions.loggedInUser + " Please answer below questions for your "+ questions.level +" quiz !!! </h1>";
+        console.log(mydiv);
+        document.getElementById("level").value = questions.level;
+        const mytable = document.getElementById("quiz-table");
+        questions.questionList.forEach(question => {
+            let newRow = document.createElement("tr");
+            let cell = document.createElement("td");
+            cell.innerText = question.id +". " + question.text;
+            newRow.appendChild(cell);
+            mytable.appendChild(newRow);
+            let answerRow = document.createElement("tr");
+            let answerChoice = document.createElement("td");
+            let answerInnerText = "";
+            question.answerChoice.forEach(answerOption => {
+                answerInnerText = answerInnerText + "<br>" + "<input type=\"radio\" id= "+ question.id +" name="+ question.id +" value="+ answerOption +"><label for=" + answerOption + ">"+ answerOption +"</label><br>"
+            });
+            answerChoice.innerHTML = answerInnerText;
+            answerRow.appendChild(answerChoice);
+            mytable.appendChild(answerRow);
+        });
+    }
+
+</script>
+<body>
+      <div class="header" id="header">
+        <img src="/images/citlogo.png">
+      </div> 
+
+      <div class="header" id="header-div">
+        test
+      </div>
+      
+      <div class="header" id="quiz-questions">
+        <form method="POST" action="http://localhost:8080/questions">
+            <input type="hidden" id="level" name="level" value="easy">
+            <table id="quiz-table">
+            </table>
+            <button type="submit">Submit</button> 
+        </form>
+      </div>  
+</body>   
+</html>

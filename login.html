@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+</head>  
+<script type="text/javascript" charset="utf-8">
+  fetch('http://localhost:8080/loginStatus')
+      .then(function (response) {
+          console.log(response);
+          return response.json();
+      }).then(function (apiJsonData) {
+          console.log(apiJsonData);
+          renderHeaderDiv(apiJsonData);
+      })
+  
+  function renderHeaderDiv(loginStatus) {
+      const mydiv = document.getElementById("login-status");
+      console.log(loginStatus.status);
+      if(loginStatus.status != null && loginStatus.status === false)
+      {
+        mydiv.innerHTML = "<p style=\"color:red;\">Invalid login creds or user doesn't exist. Please register if you are login for the first time.</p>";
+
+      }
+  }
+</script>
+<body>
+      <div class="header" id="header">
+        <img src="images/citlogo.png">
+      </div>  
+      <form method="POST" action="http://localhost:8080/login">
+        <div class="container"> 
+            <label>Username : </label> 
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <label>Password : </label> 
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <div id="login-status"></div>
+            <button type="submit">Login</button> 
+            <input type="checkbox" checked="checked"> Remember me 
+            <button type="button" class="cancelbtn"> Cancel</button> 
+            <a href="http://localhost:8080/signUpPage"> SignUp? </a> 
+        </div> 
+    </form>   
+</body>   
+</html>

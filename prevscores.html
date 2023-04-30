@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login Page </title>
+</head> 
+<script type="text/javascript" charset="utf-8">
+    fetch('http://localhost:8080/prevScores')
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        }).then(function (apiJsonData) {
+            console.log(apiJsonData);
+            renderHeaderDiv(apiJsonData);
+        })
+    
+    function renderHeaderDiv(results) {
+        const mydiv = document.getElementById("results-div");
+        console.log(results);
+        mydiv.innerHTML = "<h1> " + results.user + " Please see your score history below </h1>";
+        console.log(mydiv);
+        const mytable = document.getElementById("results-table");
+        index = 1;
+        results.prevScores.forEach(result => {
+            let newRow = document.createElement("tr");
+            let cell = document.createElement("td");
+            cell.innerText = index;
+            newRow.appendChild(cell);
+
+            let cell1 = document.createElement("td");
+            cell1.innerText = result.level;
+            newRow.appendChild(cell1);
+
+            let cell2 = document.createElement("td");
+            cell2.innerText = result.score;
+            newRow.appendChild(cell2);
+
+            let cell3 = document.createElement("td");
+            cell3.innerText = result.date_taken;
+            newRow.appendChild(cell3);
+
+            mytable.appendChild(newRow);
+            index = index + 1;
+        });
+    }
+
+</script> 
+<body>
+    <div class="header" id="header">
+      <img src="/images/citlogo.png">
+    </div> 
+
+    <div class="topnav" id="myTopnav">
+        <a href="http://localhost:8080/home">Home</a>
+        <a href="http://localhost:8080/loadPrevScores" class="active">Score History</a>
+    </div>
+
+    <div class="header" id="results-div">
+      test
+    </div>
+    
+    <div class="header" id="results-display">
+          <table id="results-table">
+            <tr>
+                <th>S.No</th>
+                <th>level</th>
+                <th>Score</th>
+                <th>Date Taken</th>
+            </tr>
+          </table>
+    </div>  
+</body>   
+</html>

@@ -1,0 +1,12 @@
+[
+    {"id":1,"text":"A running man crosses a bridge of length 500 meters in 4 minutes. At what speed he is running","answerChoice":["7.5","6","4.5","3"],"correctAnswer":"7.5"},
+    {"id":2,"text":" A jogger is running at a speed of 15 km/hr. In what time he will cross a track of length 400 meters","answerChoice":["96sec","55sec","45sec","33sec"],"correctAnswer":"96sec"},
+    {"id":3,"text":"A can do a job in 12 days and B can do the same job in 10 days. With the help of C they can do the same job in 4 days. In how many days C alone can do this job","answerChoice":["15days","20days","25days","10days"],"correctAnswer":"15days"},
+    {"id":4,"text":" Peter is in the East of Tom and Tom is in the North of John. Mike is in the South of John then in which direction of Peter is Mike","answerChoice":["south","west","north","south-west"],"correctAnswer":"south-west"},
+    {"id":5,"text":" An animal always has","answerChoice":["skin","heart","life","lungs"],"correctAnswer":"life"},
+    {"id":6,"text":" If in a certain language, NOIDA is coded as OPJEB, how is DELHI coded in that language","answerChoice":["EFMIJ","ABCDE","EFJHU","ZXCVB"],"correctAnswer":"EFMIJ"},
+    {"id":7,"text":"BOOK","answerChoice":["pages","education","knowledge","paper"],"correctAnswer":"pages"},
+    {"id":8,"text":"Choose one of the following options that means the opposite of the given word; Copious:","answerChoice":["Scarce","reverse","abundant","short"],"correctAnswer":"Scarce"},
+    {"id":9,"text":" In a certain code, ARMY is written as ASOB. How is JUDGE written in that code","answerChoice":["JVFJI","ADFGH","DFGTH","MNOPD"],"correctAnswer":"JVFJI"},
+    {"id":10,"text":"A, B and C are partners. They have invested Rs.35000, Rs. 25000 and 10,000 respectively for the same period. If the total profit is Rs. 18000, find the share of A.","answerChoice":["3000","9000","1025","1200"],"correctAnswer":"9000"}
+]
